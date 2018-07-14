@@ -90,7 +90,7 @@ public class StudentController {
 			//调用service代码来查询信息
 			studentService.findById(id);
 			//如果查询成功返回成功信息
-			return MsgResponse.success("保存成功", student);
+			return MsgResponse.success("保存成功", studentService.findById(id));
 		} catch (Exception e) {
 			//先打印错误信息，让后台开发者知道问题所在；返回错误信息，让前端者知道问题所在；
 			e.printStackTrace();
