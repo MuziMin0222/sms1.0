@@ -26,14 +26,14 @@ public class StudentController {
 			studentService.deleteById(id);
 			//如果删除成功返回成功信息
 			return MsgResponse.success("删除成功", null);
-			
+
 		} catch (Exception e) {
 			//先打印错误信息，让后台开发者知道问题所在；返回错误信息，让前端者知道问题所在；
 			e.printStackTrace();
 			return MsgResponse.error(e.getMessage());
 		}
 	}
-	
+
 	@PostMapping("updateStudent")
 	public MsgResponse updateStudent(Student student){
 		try {
@@ -41,7 +41,7 @@ public class StudentController {
 			studentService.update(student);
 			//如果更新成功返回成功信息
 			return MsgResponse.success("更新成功", null);
-			
+
 		} catch (Exception e) {
 			//先打印错误信息，让后台开发者知道问题所在；返回错误信息，让前端者知道问题所在；
 			e.printStackTrace();
@@ -68,20 +68,20 @@ public class StudentController {
 			return MsgResponse.error(e.getMessage());
 		}
 	}
-	
-	
-	
+
+
+
 	//http://127.0.0.1:8080/student/findAllStudent
 	@GetMapping("findAllStudent")
-	public List<Student> findAllStudent(){
-		
+	public MsgResponse findAllStudent(){
+
 		try {
 			List<Student> list = studentService.findAll();
-			return list;
+			return MsgResponse.success("查询成功", list);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return null;
+			return MsgResponse.error(e.getMessage());
 		}
 	}
 	@GetMapping("findStudentById")
