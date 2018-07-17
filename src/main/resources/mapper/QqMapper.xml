@@ -4,28 +4,28 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.briup.app02.dao.QqMapper">
 	<!-- 查询所有问卷中问题信息 -->
-	<select id="findAll" resultType="com.briup.app02.dao.QqMapper">
-		select * from poll
+	<select id="findAll" resultType="com.briup.app02.bean.Qq">
+		select * from poll_qq
 	</select>
 
 	<!-- 通过id查询问卷中问题信息 -->
 	<select id="findById" parameterType="long" resultType="com.briup.app02.bean.Qq">
-		select *from poll where id = #{id}
+		select *from poll_qq where id = #{id}
 	</select>
 	<!-- 保存问卷中问题信息 -->
 	<insert id="save" parameterType="com.briup.app02.bean.Qq">
-		insert into poll values(null,#{question_id},#{qusetionnaire_id})
+		insert into poll_qq values(null,#{question_id},#{qusetionnaire_id})
 	</insert>
 
 	<!-- 修改问卷中问题信息 -->
 	<update id="update" parameterType="com.briup.app02.bean.Qq">
-		update poll
+		update poll_qq
 		set question_id = #{question_id} , questionnaire_id = #{questionnaire_id}
 		where id = #{id}
 	</update>
 
 	<!-- 删除问卷中问题信息 -->
 	<delete id="deleteById" parameterType="long">
-		delete from poll where id = #{id}
+		delete from poll_qq where id = #{id}
 	</delete>
 </mapper>

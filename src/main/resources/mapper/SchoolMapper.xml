@@ -4,28 +4,28 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.briup.app02.dao.SchoolMapper">
   <!-- 查询所有学校信息 -->
-  <select id="findAll" resultType="com.briup.app02.dao.SchoolMapper">
-    select * from poll
+  <select id="findAll" resultType="com.briup.app02.bean.School">
+    select * from poll_school
   </select>
   
   <!-- 通过id查询学校信息 -->
   <select id= "findById" parameterType="long" resultType= "com.briup.app02.bean.School">
-    select *from poll where id = #{id}
+    select *from poll_school where id = #{id}
   </select>
   <!-- 保存学校信息 -->
   <insert id="save" parameterType="com.briup.app02.bean.School">
-    insert into poll values(null,#{name},#{description},#{address},#{telephone},#{copyright})
+    insert into poll_school values(null,#{name},#{description},#{address},#{telephone},#{copyright})
   </insert>
   
   <!-- 修改学校信息 -->
   <update id="update" parameterType="com.briup.app02.bean.School">
-    update poll
+    update poll_school
     set name = #{name} , description = #{description} , address = #{address} , telephone =#{telephone} , copyright=#{copyright}
     where id = #{id}  
   </update>
   
   <!-- 删除学校信息-->
   <delete id="deleteById" parameterType="long">
-  	delete from poll where id = #{id}
+  	delete from poll_school where id = #{id}
   </delete>
 </mapper>

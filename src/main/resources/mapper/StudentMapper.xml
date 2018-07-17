@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.briup.app02.dao.StudentMapper">
   <!-- 查询所有学生信息 -->
-  <select id="findAll" resultType="com.briup.app02.dao.StudentMapper">
+  <select id="findAll" resultType="com.briup.app02.bean.Student">
     select * from tbl_student
   </select>
   
