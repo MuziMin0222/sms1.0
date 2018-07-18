@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.briup.app02.bean.Question;
 import com.briup.app02.service.IQuestionService;
 import com.briup.app02.util.MsgResponse;
+import com.briup.app02.vm.QuestionVM;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 /**
  * 保存学生信息
@@ -20,6 +24,7 @@ import com.briup.app02.util.MsgResponse;
  * @return
  */
 
+@Api(description = "问题相关接口")
 @RestController
 @RequestMapping("/question")
 public class QuestionController {
@@ -28,11 +33,25 @@ public class QuestionController {
 	private IQuestionService questionService;
 	
 	
-	@GetMapping("findAllQuestion")
-	public MsgResponse findAllQuestion(){
+	@ApiOperation(value = "保存问题",notes = "保存问题的同时保存选项,id不用输入，即问题id和选项id "
+			+ "选项中的外键id也不用输入")
+	@PostMapping("saveQuestion")
+	public MsgResponse saveQuestion(QuestionVM questionVM){
+		try {
+			questionService.saveQuestion(questionVM);
+			return MsgResponse.success("success", null);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}
+	}
+	
+	@ApiOperation(value = "查看所有问题",notes="级联查询出属于该题目的选项")
+	@GetMapping("findAllQuestionVM")
+	public MsgResponse findAllQuestionVM(){
 		
 		try {
-			List<Question> list = questionService.findAll();
+			List<QuestionVM> list = questionService.findAllQuestionVM();
 		    return MsgResponse.success("查询成功", list);
 			
 		} catch (Exception e) {
@@ -48,6 +67,18 @@ public class QuestionController {
 			questionService.findById(id);
 			//如果查询成功返回成功信息
 			return MsgResponse.success("保存成功", questionService.findById(id));
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}
+	}
+	
+	@GetMapping("findByIdQuestionVM")
+	public MsgResponse findByIdQuestionVM(long id){
+		try{
+			//如果查询成功返回成功信息
+			return MsgResponse.success("保存成功", questionService.findByIdQuestionVM(id));
 			
 		} catch (Exception e) {
 			e.printStackTrace();

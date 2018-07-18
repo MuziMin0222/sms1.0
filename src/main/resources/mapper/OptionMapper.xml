@@ -12,6 +12,10 @@
   <select id= "findById" parameterType="long" resultType= "com.briup.app02.bean.Option">
     select *from poll_option where id = #{id}
   </select>
+  
+   <select id= "findByQuestionId" parameterType="long" resultType= "com.briup.app02.bean.Option">
+    select *from poll_option where question_id= #{id}
+  </select>
   <!-- 保存选项信息 -->
   <insert id="save" parameterType="com.briup.app02.bean.Option">
     insert into poll_option values(null,#{label},#{content},#{score},#{question_id})

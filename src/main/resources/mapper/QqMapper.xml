@@ -14,7 +14,7 @@
 	</select>
 	<!-- 保存问卷中问题信息 -->
 	<insert id="save" parameterType="com.briup.app02.bean.Qq">
-		insert into poll_qq values(null,#{question_id},#{qusetionnaire_id})
+		insert into poll_qq values(null,#{question_id},#{questionnaire_id})
 	</insert>
 
 	<!-- 修改问卷中问题信息 -->

@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.briup.app02.bean.Qq;
 import com.briup.app02.service.IQqService;
 import com.briup.app02.util.MsgResponse;
+import com.briup.app02.vm.QqVM;
+
+import io.swagger.annotations.Api;
 
 /**
  * 保存学生信息
@@ -20,6 +23,7 @@ import com.briup.app02.util.MsgResponse;
  * @return
  */
 
+@Api(description = "桥表相关接口")
 @RestController
 @RequestMapping("/qq")
 public class QqController {
@@ -40,6 +44,19 @@ public class QqController {
 			return MsgResponse.error(e.getMessage());
 		}
 	}
+
+	@GetMapping("findAllQqVM")
+	public MsgResponse findAllQqVM(){
+
+		try {
+			List<QqVM> list = qqService.findAllQqVM();
+			return MsgResponse.success("查询成功", list);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}
+	}
 	
 	@GetMapping("findQqById")
 	public MsgResponse findQqById(long id){
@@ -48,6 +65,18 @@ public class QqController {
 			qqService.findById(id);
 			//如果查询成功返回成功信息
 			return MsgResponse.success("保存成功", qqService.findById(id));
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}
+	}
+	
+	@GetMapping("findByIdQqVM")
+	public MsgResponse findByIdQqVM(long id){
+		try{
+			//如果查询成功返回成功信息
+			return MsgResponse.success("保存成功", qqService.findByIdQqVM(id));
 			
 		} catch (Exception e) {
 			e.printStackTrace();

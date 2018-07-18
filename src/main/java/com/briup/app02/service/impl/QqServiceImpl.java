@@ -5,24 +5,27 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.briup.app02.service.IQqService;
+import com.briup.app02.vm.QqVM;
 import com.briup.app02.bean.Qq;
 import com.briup.app02.dao.QqMapper;
+import com.briup.app02.dao.extend.QqVMMapper;
 
 @Service
 public class QqServiceImpl implements IQqService{
 	@Autowired
 	private QqMapper qqMapper;
+	@Autowired
+	private QqVMMapper qqVMMapper;
 	
 	@Override
 	public List<Qq> findAll() throws Exception{
-		//调用SchoolMapper查询所有学校
-		List<Qq> list = qqMapper.findAll();
-		return list;
+		return qqMapper.findAll();
 	}
-	
-	
 
-
+	@Override
+	public List<QqVM> findAllQqVM() throws Exception {
+		return qqVMMapper.findAllQqVM();
+	}
 
 	@Override
 	public Qq findById(long id) throws Exception {
@@ -36,6 +39,17 @@ public class QqServiceImpl implements IQqService{
 			throw new Exception("要查询的问卷中的问题不存在");
 		}
 		return qq;
+	}
+	
+	@Override
+	public QqVM findByIdQqVM(long id) throws Exception {
+		QqVM qqVM = qqVMMapper.findByIdQqVM(id);
+		if(qqVM!=null){
+		return qqVMMapper.findByIdQqVM(id);
+		}
+		else{
+			throw new Exception("要查询的桥表不存在");
+		}
 	}
 
 	@Override
@@ -76,4 +90,6 @@ public class QqServiceImpl implements IQqService{
 		}
 
 	}
+
+
 }

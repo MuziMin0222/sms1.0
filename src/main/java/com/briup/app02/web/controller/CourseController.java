@@ -12,6 +12,8 @@ import com.briup.app02.bean.Course;
 import com.briup.app02.service.ICourseService;
 import com.briup.app02.util.MsgResponse;
 
+import io.swagger.annotations.Api;
+
 /**
  * 保存学生信息
  * @author 李煌民
@@ -20,6 +22,7 @@ import com.briup.app02.util.MsgResponse;
  * @return
  */
 
+@Api(description = "课程相关接口")
 @RestController
 @RequestMapping("/courses")
 public class CourseController {

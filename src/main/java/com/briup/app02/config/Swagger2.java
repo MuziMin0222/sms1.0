@@ -45,8 +45,8 @@ public class Swagger2 {
 	
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
-				.title("天下如棋，一步三算")
-				.description("智商太低会传染  ，离我远点")
+				.title("皇家理工大学")
+				.description("江西小清华")
 				.termsOfServiceUrl("不做没有胜算的事")
 				.version("1.0")
 				.build();

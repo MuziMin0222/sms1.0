@@ -7,8 +7,11 @@ public interface OptionMapper {
 	//查询所有选项
 	List<Option> findAll();
 	
+	List<Option> findByQuestionId(long id);
+	
 	//通过id查询选项
 	Option findById(long id);
+	
 	
 	//保存选项信息
 	void save(Option option);

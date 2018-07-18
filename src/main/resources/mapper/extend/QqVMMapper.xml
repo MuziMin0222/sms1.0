@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.app02.dao.extend.QqVMMapper">
+	<!-- 查询所有班级信息 id,name,description,grade_id,user_id -->
+	<!-- QqVM column - property id-id, name-name, description-description 
+		grade_id - grade 通过grade_id查找grade+ user_id - user 通过user_id查找user -->
+	<select id="findAllQqVM" resultMap="QqVMResultMap">
+		select * from poll_qq
+	</select>
+	
+	<!-- 通过id查询回答信息 -->
+  <select id= "findByIdQqVM" resultMap="QqVMResultMap">
+    select *from poll_qq where id = #{id}
+  </select>
+
+	<resultMap type="com.briup.app02.vm.QqVM" id="QqVMResultMap">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="description" property="description" />
+		<association column="question_id" property="question"
+			select="com.briup.app02.dao.QuestionMapper.findById">
+		</association>
+		<association column="questionnaire_id" property="questionnaire"
+			select="com.briup.app02.dao.QuestionnaireMapper.findById">
+		</association>
+	</resultMap>
+
+</mapper>

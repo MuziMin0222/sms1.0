@@ -12,6 +12,7 @@ import com.briup.app02.dao.GradeMapper;
 public class GradeServiceImpl implements IGradeService{
 	@Autowired
 	private GradeMapper gradeMapper;
+    
 	
 	@Override
 	public List<Grade> findAll() throws Exception{

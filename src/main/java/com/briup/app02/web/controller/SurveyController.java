@@ -12,6 +12,8 @@ import com.briup.app02.bean.Survey;
 import com.briup.app02.service.ISurveyService;
 import com.briup.app02.util.MsgResponse;
 
+import io.swagger.annotations.Api;
+
 /**
  * 保存学生信息
  * @author 李煌民
@@ -20,6 +22,7 @@ import com.briup.app02.util.MsgResponse;
  * @return
  */
 
+@Api(description = "课调相关接口")
 @RestController
 @RequestMapping("/survey")
 public class SurveyController {

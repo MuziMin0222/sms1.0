@@ -12,6 +12,8 @@ import com.briup.app02.bean.Answer;
 import com.briup.app02.service.IAnswerService;
 import com.briup.app02.util.MsgResponse;
 
+import io.swagger.annotations.Api;
+
 /**
  * 保存学生信息
  * @author 李煌民
@@ -20,6 +22,7 @@ import com.briup.app02.util.MsgResponse;
  * @return
  */
 
+@Api(description = "回答相关接口")
 @RestController
 @RequestMapping("/answer")
 public class AnswerController {

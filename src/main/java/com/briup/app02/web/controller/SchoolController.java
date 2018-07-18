@@ -12,6 +12,8 @@ import com.briup.app02.bean.School;
 import com.briup.app02.service.ISchoolService;
 import com.briup.app02.util.MsgResponse;
 
+import io.swagger.annotations.Api;
+
 /**
  * 保存学生信息
  * @author 李煌民
@@ -20,6 +22,8 @@ import com.briup.app02.util.MsgResponse;
  * @return
  */
 
+
+@Api(description = "学校相关接口")
 @RestController
 @RequestMapping("/school")
 public class SchoolController {

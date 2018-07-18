@@ -7,8 +7,8 @@ public class ClazzVM {
 	private Long id;
 	private String name;
 	private String description;
-	private Grade grade;
-	private User user;
+	private Grade grade;     //年级
+	private User user;      //班主任
 	public Long getId() {
 		return id;
 	}

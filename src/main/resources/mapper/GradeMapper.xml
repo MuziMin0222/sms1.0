@@ -3,29 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.briup.app02.dao.GradeMapper">
-  <!-- 查询所有年级信息 -->
-  <select id="findAll" resultType="com.briup.app02.bean.Grade">
-    select * from poll_grade
+  <!-- 查询所有班级信息  -->
+  <select id="findById" parameterType="long" resultType="com.briup.app02.bean.Grade">
+   select * from poll_grade where id = #{id}
   </select>
-  
-  <!-- 通过id查询年级信息 -->
-  <select id= "findById" parameterType="long" resultType= "com.briup.app02.bean.Grade">
-    select *from poll_grade where id = #{id}
-  </select>
-  <!-- 保存年级信息 -->
-  <insert id="save" parameterType="com.briup.app02.bean.Grade">
-    insert into poll_grade values(null,#{name},#{description})
-  </insert>
-  
-  <!-- 修改年级信息 -->
-  <update id="update" parameterType="com.briup.app02.bean.Grade">
-    update poll_grade
-    set name = #{name} , description = #{description}
-    where id = #{id}  
-  </update>
-  
-  <!-- 删除年级信息-->
-  <delete id="deleteById" parameterType="long">
-  	delete from poll_grade where id = #{id}
-  </delete>
 </mapper>
