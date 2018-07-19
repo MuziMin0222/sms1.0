@@ -7,4 +7,25 @@
   <select id="findAll" resultType="com.briup.app02.bean.Clazz">
    select * from poll_clazz
   </select>
+  
+  <!-- 通过id查询班级信息 -->
+  <select id= "findById" parameterType="long" resultType= "com.briup.app02.bean.Clazz">
+    select *from poll_clazz where id = #{id}
+  </select>
+  <!-- 保存班级信息 -->
+  <insert id="save" parameterType="com.briup.app02.bean.Clazz">
+    insert into poll_clazz values(null,#{name},#{description},#{grade_id},#{user_id})
+  </insert>
+  
+  <!-- 修改班级信息 -->
+  <update id="update" parameterType="com.briup.app02.bean.Clazz">
+    update poll_clazz
+    set name = #{name} , description = #{description} , grade_id = #{grade_id} , user_id =#{user_id}
+    where id = #{id}
+  </update>
+  
+  <!-- 删除班级信息-->
+  <delete id="deleteById" parameterType="long">
+  	delete from poll_clazz where id = #{id}
+  </delete>
 </mapper>

@@ -10,4 +10,13 @@ public interface ClazzMapper {
 	List<Clazz> findAll();
 
 	Clazz findById(long id);
+
+	//保存班级信息
+	void save(Clazz clazz);
+
+	//修改班级信息
+	void update(Clazz clazz);
+
+	//删除班级信息
+	void deleteById(long id);
 }
